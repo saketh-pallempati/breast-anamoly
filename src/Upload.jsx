@@ -3,12 +3,12 @@ import './Upload.css'; // Import the CSS file
 
 
 const PredictForm = () => {
-    const openInNewTab = () => {
-        const imageUrl = `data:image/png;base64,${image}`;
-        const newWindow = window.open();
-        newWindow.document.write(`<img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain;" />`);
-        newWindow.document.title = "Explanation Image";
-    };
+    // const openInNewTab = () => {
+    //     const imageUrl = `data:image/png;base64,${image}`;
+    //     const newWindow = window.open();
+    //     newWindow.document.write(`<img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain;" />`);
+    //     newWindow.document.title = "Explanation Image";
+    // };
 
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -42,6 +42,7 @@ const PredictForm = () => {
 
             const data = await response.json();
 
+
             setResults(data.results);
             setImage(data.image);
         } catch (error) {
@@ -58,27 +59,43 @@ const PredictForm = () => {
                 <button type="submit" className="submit-button">Upload and Predict</button>
             </form>
             <div className='result-container'>
-                {loading && <p>Loading...</p>}
-                {results && (
-                    <div className="results-container">
-                        <h2>Results:</h2>
-                        <ul className="results-list">
-                            {results.map((result, index) => (
-                                <li key={index} className="result-item">
-                                    <strong>{result.model}:</strong> {result.prediction} ({result.confidence})
-                                </li>
-                            ))}
-                        </ul>
+                {loading && (
+                    <div className="loading-container">
+                        <div className="spinner"></div>
                     </div>
                 )}
                 {image && (
                     <div className="image-container-res">
-                        <h2>Explanation Image:</h2>
+                        <h2>Explanation Image</h2>
                         <div className="explanation-image">
-                            <img src={`data:image/png;base64,${image}`} alt="Explanation" onClick={openInNewTab} />
+                            <img src={`data:image/png;base64,${image}`} alt="Explanation" />
                         </div>
                     </div>
                 )}
+                {results && (
+                    <div className="results-container">
+                        <h2>Results</h2>
+                        <table className="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Prediction</th>
+                                    <th>Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {results.map((result, index) => (
+                                    <tr key={index} className="result-row">
+                                        <td><strong>{result.model}</strong></td>
+                                        <td>{result.prediction}</td>
+                                        <td>{result.confidence}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
             </div>
         </div>
     );

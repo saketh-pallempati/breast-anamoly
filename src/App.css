@@ -3,6 +3,18 @@ html {
   color: whitesmoke;
 }
 
+body {
+  font-family: 'Roboto';
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
 .scroll-button {
   position: absolute;
   bottom: 20px;
@@ -20,7 +32,6 @@ html {
 }
 
 .next-page {
-  height: 100vh;
   display: flex;
 }
 
@@ -51,10 +62,8 @@ html {
 
 .header_content {
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding-bottom: 20px;
-  padding-left: 20px;
+  justify-content: center;
+  align-items: center;
   display: flex;
   height: 100vh;
 }
@@ -64,13 +73,14 @@ h1 {
   margin-top: 0;
   margin-bottom: 0;
   font-family: Manrope, sans-serif;
-  font-size: 7rem;
+  font-size: 3rem;
   font-weight: 400;
   line-height: 1;
   opacity: 1;
   transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg);
   transform-style: preserve-3d;
   color: whitesmoke;
+  text-align: center;
 }
 
 .join-us_buttons-wrapper {
@@ -103,23 +113,24 @@ h1 {
   color: var(--colors--violet--violet-100);
   background-color: #46c9c900;
 }
+
 .content-container {
-    font-family: 'Arial', sans-serif; /* Use a clean, readable font */
-    font-size: 16px; /* Adjust font size for readability */
-    line-height: 1.6; /* Increase line height for better spacing */
-    color: #333; /* Use a dark color for better contrast */
-    margin: 20px; /* Add margin for spacing */
-    padding: 20px; /* Add padding for spacing */
-    background-color: #f9f9f9; /* Light background for better readability */
-    border-radius: 8px; /* Round the corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .content-container ul {
-    list-style-type: disc; /* Use disc bullets for the list */
-    padding-left: 20px; /* Add padding to the left of the list */
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
 .content-container li {
-    margin-bottom: 10px; /* Add margin to the bottom of each list item */
+  margin-bottom: 10px;
 }

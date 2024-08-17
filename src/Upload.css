@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    flex-grow: 1;
 }
 
 .predict-form {
@@ -12,9 +12,11 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .file-input {
@@ -22,7 +24,7 @@
 }
 
 .submit-button {
-    background-color: #007bff;
+    background-color: #9b8df6;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -32,50 +34,89 @@
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #8572ff;
 }
 
 .result-container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
-.results-container {
-    width: 80%;
-    margin-top: 20px;
-}
-
-.results-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.result-item {
-    background: #fff;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-strong {
-    color: #007bff;
-}
-
-.image-container-res {
-    margin-top: 20px;
+.results-table {
     width: 100%;
-    height: 500px;
+    border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.results-table th {
+    background-color: #f2f2f2;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.results-table tr:hover {
+    background-color: #ddd;
+}
+
+  
+.image-container-res {
+    text-align: center;
+    width: 100%;
+}
+
+.explanation-image {
+    display: inline-block;
     overflow: hidden;
-    position: relative;
+    width: 100%;
+    height: 250px;
 }
 
 .explanation-image img {
-    width: 150%;
+    width: 100%;
     height: auto;
     object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
+    object-position: center -400px;
+    /* Adjust to crop top and bottom */
+}
 
+.spinner {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    /* Center the spinner horizontally */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Full viewport height */
 }

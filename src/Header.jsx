@@ -20,7 +20,9 @@ const Header = () => (
     <div className="header_content">
       <div className="header_title-wrap">
         <h1>
-          Breast Abnormality detection
+        Development of GUI Platform towards <br />
+        Classification and prediction of Breast <br />
+        Thermograms based on Deep Learning Tools
         </h1>
       </div>
       <div className="join-us_buttons-wrapper">

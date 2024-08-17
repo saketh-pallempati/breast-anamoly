@@ -49,10 +49,29 @@ const Content = ({ selectedContent }) => {
             );
         case 'Models':
             return (
-                <div className="content-container">
-                    <p> Models Comparison</p>
-                    <img src={modelImage} alt="Model" />
-                </div>
+                <>
+                    <div className="content-container">
+                        <img src={modelImage} alt="Model" className="model-image" />
+                        <ul className="key-points-list">
+                            <li>
+                                <strong>Complexity Boosts Performance:</strong> Increasing model complexity (from CNN to VGG-19) generally enhances performance across various metrics, with VGG-19 showing the best results.
+                            </li>
+                            <li>
+                                <strong>YOLOv8’s Performance Decline:</strong> YOLOv8, despite its complexity, exhibits decreased performance compared to VGG-19, indicating potential overfitting issues.
+                            </li>
+                            <li>
+                                <strong>Recall Tradeoff:</strong> VGG-16 outperforms VGG-19 in Recall by 4.75, suggesting that higher complexity does not always improve the model’s ability to identify all relevant examples.
+                            </li>
+                            <li>
+                                <strong>Precision Issues:</strong> Precision improves with complexity up to VGG-19 but drops with YOLOv8, indicating increased false-positive predictions.
+                            </li>
+                            <li>
+                                <strong>F1-Score and AUC Trends:</strong> Both metrics improve up to VGG-19 but decline with YOLOv8, showing a loss in balancing Recall and Precision and reduced class distinction.
+                            </li>
+                        </ul>
+
+                    </div>
+                </>
             );
         case 'Upload':
             return <div className="content-container"><PredictForm /> </div>;
