@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import './Upload.css'; // Import the CSS file
 
-
 const PredictForm = () => {
-    // const openInNewTab = () => {
-    //     const imageUrl = `data:image/png;base64,${image}`;
-    //     const newWindow = window.open();
-    //     newWindow.document.write(`<img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain;" />`);
-    //     newWindow.document.title = "Explanation Image";
-    // };
+    const openInNewTab = () => {
+        const imageUrl = `data:image/png;base64,${image}`;
+        const newWindow = window.open();
+        newWindow.document.write(`<img src="${imageUrl}" style="width: 100%; height: 100%; object-fit: contain;" />`);
+        newWindow.document.title = "Explanation Image";
+    };
 
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -67,11 +66,14 @@ const PredictForm = () => {
                 {image && (
                     <div className="image-container-res">
                         <h2>Explanation Image</h2>
-                        <div className="explanation-image">
+                        <div className="explanation-image" onClick={openInNewTab}>
                             <img src={`data:image/png;base64,${image}`} alt="Explanation" />
                         </div>
                     </div>
                 )}
+                {results &&
+                    <h4>Overlap between the explained and detected regions boosts confidence in the model&apos;s decision, <br />while a lack of overlap suggests the need for a clinician&apos;s second opinion.</h4>
+                }
                 {results && (
                     <div className="results-container">
                         <h2>Results</h2>
@@ -85,7 +87,16 @@ const PredictForm = () => {
                             </thead>
                             <tbody>
                                 {results.map((result, index) => (
-                                    <tr key={index} className="result-row">
+                                    <tr
+                                        key={index}
+                                        className={
+                                            result.model === "VGG19"
+                                                ? result.prediction === "Abnormal"
+                                                    ? "red-row"
+                                                    : "green-row"
+                                                : ""
+                                        }
+                                    >
                                         <td><strong>{result.model}</strong></td>
                                         <td>{result.prediction}</td>
                                         <td>{result.confidence}</td>
@@ -95,7 +106,6 @@ const PredictForm = () => {
                         </table>
                     </div>
                 )}
-
             </div>
         </div>
     );
