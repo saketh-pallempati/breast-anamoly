@@ -64,16 +64,16 @@ const PredictForm = () => {
                     </div>
                 )}
                 {image && (
-                    <div className="image-container-res">
-                        <h2>Explanation Image</h2>
-                        <div className="explanation-image" onClick={openInNewTab}>
-                            <img src={`data:image/png;base64,${image}`} alt="Explanation" />
+                    <>
+                        <div className="image-container-res">
+                            <h2>Explanation Image</h2>
+                            <div className="explanation-image" onClick={openInNewTab}>
+                                <img src={`data:image/png;base64,${image}`} alt="Explanation" />
+                            </div>
                         </div>
-                    </div>
+                        <h4>Overlap between the explained and detected regions boosts confidence in the model&apos;s decision, <br />while a lack of overlap suggests the need for a clinician&apos;s second opinion.</h4>
+                    </>
                 )}
-                {results &&
-                    <h4>Overlap between the explained and detected regions boosts confidence in the model&apos;s decision, <br />while a lack of overlap suggests the need for a clinician&apos;s second opinion.</h4>
-                }
                 {results && (
                     <div className="results-container">
                         <h2>Results</h2>
